@@ -1,0 +1,14 @@
+# Vscode and Idea
+.vscode/
+.idea/
+
+# ignore maven build folder
+target/
+
+# pom-derived eclipse jdt files
+.project
+.classpath
+org.eclipse.*.prefs
+
+#Include dmg file
+!target/dist/

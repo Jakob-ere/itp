@@ -1,0 +1,33 @@
+.inputContainer {
+	width: 50vw;
+	height: 40vh;
+	margin: auto;
+}
+
+.clickable_text {
+	font-weight: bold;
+	text-align: left;
+}
+
+.clickable_text:hover {
+	cursor: pointer;
+}
+
+.inputForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	height: 100%;
+	max-width: 75%;
+	margin: auto;
+}
+
+.buttonDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 20px;
+	width: 100%;
+}

@@ -1,0 +1,14 @@
+.Footer {
+	background-color: #395b64;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 10%;
+	padding-right: 10%;
+	color: aliceblue;
+}
+
+.Footer-icon {
+	max-width: 50px;
+}

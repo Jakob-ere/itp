@@ -1,0 +1,42 @@
+@startuml Package_diagram.puml
+
+component Core {
+  package cryptocojo_backend.core {
+  }
+}
+
+component Rest {
+  package cryptocojo_backend.rest {
+  }
+}
+
+component UI {
+    package cryptocojo_frontend {
+    }
+}
+
+package Storage{
+}
+
+[Java]
+[Gson]
+[Springboot]
+[React]
+[TypeScript]
+
+cryptocojo_backend.rest .[#red,dashed,thickness=1].> cryptocojo_backend.core
+cryptocojo_backend.rest .[#red,dashed,thickness=1].> Gson
+cryptocojo_backend.rest .[#red,dashed,thickness=1].> Springboot
+cryptocojo_backend.rest .[#red,dashed,thickness=1].> Java
+
+cryptocojo_frontend .[#red,dashed,thickness=1].> cryptocojo_backend.rest
+cryptocojo_frontend .[#red,dashed,thickness=1].> TypeScript
+cryptocojo_frontend .[#red,dashed,thickness=1].> React
+
+cryptocojo_backend.core .[#red,dashed,thickness=1].> Gson
+cryptocojo_backend.core .[#red,dashed,thickness=1].> Storage
+cryptocojo_backend.core .[#red,dashed,thickness=1].> Java
+
+Storage .[#red,dashed,thickness=1].> Json
+
+@enduml

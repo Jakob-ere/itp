@@ -1,0 +1,56 @@
+@startuml Cryptocojo
+
+'? Hvordan se preview av diagrammet?
+'* Hvis du har plantUML extension kan du trykke option + D.
+'* Eller gå i command palett og skrive Preview Current Diagram
+
+actor "User" as Webuser
+participant "Front End" as Frontend
+database "Rest Api" as RestApi
+participant "Back End" as Backend
+database "CoinCap" as Api 
+
+Webuser -> Frontend ++ : Login
+group Step: Login User
+Frontend -> RestApi ++ : LoginUser
+RestApi -> Backend ++ : getUser
+Backend -> RestApi -- : User
+RestApi -[#Green]> Frontend -- : 200 OK, User
+else Wrong username/password
+Frontend -[#Red]> Webuser : Try again
+else No User
+Frontend -> RestApi ++ : signUpUser
+RestApi -> Backend ++ : createNewUser
+Backend -> RestApi -- : User
+RestApi -[#Green]> Frontend -- : 201 Created, User
+end
+
+group Step: Get Crypto
+Frontend -> Api ++ : getAllAvalibleCoins
+Api -[#Green]> Frontend : 200 OK, Crypto
+else Request Failed
+Api -[#Red]> Frontend -- : Failed
+end
+Frontend -> Webuser -- : Dashboard 
+
+Webuser -> Frontend ++ : Buy
+group Step: Buy Coin
+Frontend -> RestApi ++ : buyCoin
+RestApi -> Backend : addCurrency
+RestApi -[#Green]> Frontend -- : 200 OK
+Frontend -> RestApi ++ : getOwnedCoins
+RestApi -> Backend ++ : getOwnedCoins
+Backend -> RestApi -- : User
+RestApi -> Frontend -- : 200 OK, String
+Frontend -> Frontend : updateListView
+else IllegalArgumentException 
+Backend -[#Red]> RestApi  ++ : "Can't buy a negative amount"
+RestApi -[#Red]> Frontend -- : 400 Bad Request
+else IllegalArgumentException2
+Backend -[#Red]> RestApi ++ : "Could not create file"
+RestApi -[#Red]> Frontend -- : 400 Bad Request
+end
+Frontend -> Webuser -- : UpdateView
+
+@endumls
+

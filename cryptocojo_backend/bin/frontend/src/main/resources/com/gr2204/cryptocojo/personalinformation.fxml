@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="829.0" style="-fx-background-color: #414a4c;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gr2204.cryptocojo.personalInformationController">
+  <children>
+    <Label layoutX="23.0" layoutY="13.0" text="Cryptocojo" textFill="#fcf415">
+      <font>
+        <Font size="30.0" />
+      </font>
+    </Label>
+    <Label layoutX="366.0" layoutY="18.0" text="Personal holdings" textFill="#fcf415">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
+    <Button fx:id="CU_button" layoutX="44.0" layoutY="201.0" mnemonicParsing="false" onAction="#setContactUs" text="Contact Us" />
+    <Button fx:id="F_button" layoutX="44.0" layoutY="149.0" mnemonicParsing="false" onAction="#setFinance" text="Finance" />
+    <Button fx:id="S_button" layoutX="44.0" layoutY="248.0" mnemonicParsing="false" onAction="#setSettings" text="Settings" />
+    <Button layoutX="545.0" layoutY="388.0" mnemonicParsing="false" onAction="#loggOut" text="Logg out" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+    <Label layoutX="656.0" layoutY="62.0" text="Your coins" textFill="#fcf415" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="60.0">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
+    <ListView fx:id="ownCoinsListView" editable="true" layoutX="612.0" layoutY="95.0" prefHeight="144.0" prefWidth="250.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+    <Label fx:id="coin" layoutX="314.0" layoutY="105.0" prefHeight="26.0" prefWidth="238.0" textFill="#fcf415" AnchorPane.leftAnchor="314.0" AnchorPane.topAnchor="105.0">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
+    <Label fx:id="coinAmount" layoutX="433.0" layoutY="135.0" prefHeight="26.0" prefWidth="81.0" text="-" textFill="WHITE" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="135.0" />
+    <Button fx:id="buyButton" layoutX="387.0" layoutY="374.0" mnemonicParsing="false" onAction="#buyCoins" text="Buy" AnchorPane.bottomAnchor="124.0" AnchorPane.rightAnchor="388.5" />
+    <TextField fx:id="changeAmount" layoutX="387.0" layoutY="319.0" AnchorPane.bottomAnchor="184.0" AnchorPane.rightAnchor="290.0" />
+    <Button fx:id="sellButton" layoutX="488.0" layoutY="374.0" mnemonicParsing="false" onAction="#sellCoins" text="Sell" AnchorPane.bottomAnchor="124.0" AnchorPane.rightAnchor="287.5" />
+      <Line endX="-13.0" endY="426.0" layoutX="200.0" layoutY="103.0" startX="-13.0" startY="-103.0" stroke="#e7f54d" />
+      <ListView fx:id="allCoinsListView" editable="true" layoutX="612.0" layoutY="302.0" prefHeight="144.0" prefWidth="250.0" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="20.0" />
+      <Label layoutX="640.0" layoutY="252.0" text="Available coins" textFill="#fcf415" AnchorPane.bottomAnchor="251.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="proButton" layoutX="33.0" layoutY="454.0" mnemonicParsing="false" onAction="#togglePro" text="Toggle pro-mode" />
+      <Label layoutX="8.0" layoutY="495.0" text="Currently:" textFill="WHITE" />
+      <Label fx:id="currentMode" layoutX="75.0" layoutY="495.0" />
+      <Label fx:id="marketCapUsd" layoutX="317.0" layoutY="163.0" prefHeight="17.0" prefWidth="98.0" text="Marketcap (USD)" textFill="WHITE" />
+      <Label fx:id="marketCapUsdValue" layoutX="433.0" layoutY="162.0" text="-" textFill="WHITE" />
+      <Label layoutX="370.0" layoutY="141.0" text="Owned" textFill="WHITE" />
+      <Label layoutX="342.0" layoutY="185.0" text="Volume 24h" textFill="WHITE" />
+      <Label fx:id="volume" layoutX="433.0" layoutY="185.0" text="-" textFill="WHITE" />
+      <Label layoutX="380.0" layoutY="206.0" text="Price" textFill="WHITE" />
+      <Label fx:id="price" layoutX="432.0" layoutY="206.0" text="-" textFill="WHITE" />
+      <Label fx:id="supplyTag" layoutX="345.0" layoutY="225.0" prefHeight="17.0" prefWidth="67.0" textFill="WHITE" />
+      <Label fx:id="supply" layoutX="433.0" layoutY="225.0" prefHeight="17.0" prefWidth="89.0" textFill="WHITE" />
+      <Label layoutX="378.0" layoutY="295.0" text="Buy coin" textFill="WHITE" />
+      <Label fx:id="vwap24HrTag" layoutX="316.0" layoutY="244.0" prefHeight="26.0" prefWidth="98.0" textFill="WHITE" />
+      <Label fx:id="vwap24Hr" layoutX="426.0" layoutY="249.0" prefHeight="17.0" prefWidth="89.0" textFill="WHITE" />
+  </children>
+</AnchorPane>

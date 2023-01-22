@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #414a4c#414a4c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CreateUserController">
+    <children>
+        <Label layoutX="193.0" layoutY="71.0" text="Create New User" textFill="#dada2c">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <Label layoutX="193.0" layoutY="153.0" text="Username:" textFill="#f5f81d" />
+        <Label layoutX="193.0" layoutY="200.0" text="Mail:" textFill="#f5f81d" />
+        <Label layoutX="193.0" layoutY="241.0" text="Password" textFill="#f5f81d" />
+        <TextField fx:id="username" layoutX="260.0" layoutY="149.0" promptText="Username" />
+        <TextField fx:id="mail" layoutX="260.0" layoutY="196.0" promptText="mail" />
+        <PasswordField fx:id="password" layoutX="260.0" layoutY="237.0" promptText="Password" />
+        <Button layoutX="198.0" layoutY="304.0" mnemonicParsing="false" onAction="#createNewUser" style="-fx-background-color: #414a4c#414a4c;" text="Create New User" textFill="#e7f21e" />
+        <Button layoutX="340.0" layoutY="304.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #414a4c#414a4c;" text="Back" textFill="#e7f21e" />
+      <Label fx:id="errorMessage" layoutX="282.0" layoutY="124.0" textFill="#fff71e" />
+    </children>
+</AnchorPane>

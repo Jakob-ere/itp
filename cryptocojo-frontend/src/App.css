@@ -1,0 +1,15 @@
+.App {
+	text-align: center;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+.main {
+	display: flex;
+	color: white;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: space-between;
+}

@@ -1,0 +1,274 @@
+@startuml Core_Module_Class_diagram.puml
+
+'! Denne funker ikke her, men skal funke i plantUML på nett. - 14.11 1600
+
+
+class CoinController{
+-coinservice: Coinservice
++getOwnedCoins(final String userId): ResponseEntity<String>
+}
+class CoinService{
++getAllAvalibleCoins(): Collection<Coin>
++getOwnedCoins(final String userId): ResponseEntity<String>
+}
+
+
+class LoginController{
+-loginService: LoginService
++getUser(final String username, final String password): ResponseEntity<User>
+}
+class LoginService{
++loginUser(final String username, final String password): LoginDetails
+}
+
+
+class UserController{
+-userService: UserService
++getUser(final String userId): ResponseEntity<User>
++getAccountInterval(final String timeStamp, final String userId): ResponseEntity<List<DecodeTime>>
++createNewUser(final String username, final String password, final String email): ResponseEntity<User>
++togglePro(final String userId): ResponseEntity<Void>
++addCurrency(final String userId, final String coin, final String amount): ResponseEntity<void>
++removeCurrency(final String userId, final String coin, final String amount): ResponseEntity<void>
+
+}
+class UserService{
++createUser(final String username, final String password, final String email): User
++getUser(final String userId): User
+
+}
+
+
+
+
+UserController -- UserService : depends >
+LoginController -- LoginService : depends >
+CoinController -- CoinService : depends >
+
+'Vi vet her at frontend ikke er en klasse i seg selv, men det visualiserer godt hvordan frontenden jobber med REST API.
+FrontEnd -- UserController : depends >
+FrontEnd -- CoinController : depends >
+FrontEnd --  LoginController : depends >
+
+UserService -- SaveToFile : depends >
+UserService -- User : uses >
+UserService -- GetUserFromFile : depends >
+
+LoginService -- LoginUser : depends >
+
+CoinService -- "Many" Coin : uses >
+CoinService -- OwnedCoin : depends >
+CoinService -- GetUserFromFile : depends >
+CoinService -- User : uses >
+
+User -- UserValidation : uses >
+User --* "many" Coin : owns/buys/sells >
+User -- GetCryptoData : uses >
+User --* "many" Purchase : has >
+
+Coin -- PriceFormat : uses >
+
+LoginUser -- LoginDetails : uses >
+
+DecodeCoin -- Coin : has >
+
+DecodeTimeManager -- "Many" DecodeTime : has >
+
+GetCryptoData -- DecodeCoinManager : uses >
+GetCryptoData -- DecodeCoin : uses >
+GetCryptoData -- DecodeTimeManager : uses >
+GetCryptoData -- ConnectionResponse : uses >
+
+GetUserFromFile -- User : creates >
+GetUserFromFile -- FindFile : uses >
+
+SaveToFile -- User : saves >
+SaveToFile -- UserAuth : saves >
+
+
+
+
+class Coin{
+    -id: String
+    -rank: String
+    -name: String
+    -symbol: String
+    -supply: Double
+    -maxSupply: Double
+    -marketCapUsd: Double
+    -volumeUsd24Hr: Double
+    -priceUsd: Double
+    -changePercentage24Hr: Double
+    -vwap24Hr: Double
+    +getId(): String
+    +getRank(): String
+    +getName(): String
+    +getSymbol(): String
+    +prettySupply(): String
+    +getSupply(): Double
+    +getMaxSupply(): Double
+    +getMarketCapUsd(): Double
+    +prettyMarketCapUsd(): String
+    +getVolumeUsd24Hr(): Double
+    +prettyVolumeUsd24Hr(): String
+    +getPriceUsd(): Double
+    +getChangePercentage24Hr(): Double
+    +prettyvwap24Hr(): String
+    +toString(): String
+}
+
+class Purchase{
+    -time: long
+    -coin: String
+    -amount: Double
+    +getTime(): long
+    +getCoin(): String
+    +getAmount(): Double
+}
+
+
+class OwnedCoin{
+    -name: String
+    -amount: Double
+}
+
+class PriceFormat{
+    -THOUSAND: Double
+    -MILLION: Double
+    -BILLION: Double
+    +numberFormat(final Double value): String
+    +priceNumberFormat(final Double value): String
+    +round(final Double value, final int places): double
+}
+
+class LoginDetails{
+    -username: String
+    -password: String
+    -userId: String
+    +getUserName(): String
+    +getPassword(): String
+    +getUserId(): String
+    +toString(): String
+}
+
+
+class LoginUser{
+    +loginUserFromFile(final String username, final String password): LoginDetails
+}
+
+
+class ConnectionResponse{
+    -responseCode: Integer
+    -responseMessage: String
+    +getResponseCode(): Integer
+    +getResponseMessage(): String
+}
+
+class DecodeCoin{
+    -label: String
+    -data: Coin
+    +getLabel(): String
+    +getData(): String
+}
+
+class DecodeCoinManager{
+    -label: String
+    -data: List<Coin>
+    +getLabel(): String
+    +getData(): List<Coin>
+}
+
+class DecodeTime{
+    -time: Double
+    -priceUsd: Double
+    +getTime(): Double
+    +getgetPriceUsd(): Double
+    +setPrice(fiale Double amount): void
+}
+
+class DecodeTimeManager{
+    -data: List<DecodeTime>
+    +getData():List<DecodeTime>
+}
+
+class GetCryptoData{
+    -TWO_HUNDERED: int
+    -FOUR_HUNDERED: int
+    -FOUR_O_FOUR: int
+    -FOUR_TWENTY_NINE: int
+    -FIVE_HUNDERED: int
+    -LEGALTIMESTAMPS: List<String>
+    -url: URL
+    +connection(final String endpoint): ConnectionResponse
+    +getAllCoinData(): Collection<Coin>
+    +getCoinData(final String coinName): Coin
+    +getHistoryData(final String coinName, final String timeStamp): DecodeTimeManager
+    +getHistoryDataWithInterval(final String coinName, final String timeStamp, final long start, final long end): DecodeTimeManager
+}
+
+class FindFile{
+    -userId: String
+    +accept(final File dir, final String name): boolean
+}
+
+class GetUserFromFile{
+    +retrieveUser(final String userId): User
+    +userExists(final String userId): boolean
+}
+
+class SaveToFile{
+    +saveUserToFile(final User user): void
+    +saveAuthInfo(final User user): void
+}
+
+class User{
+    -name: String
+    -email: String
+    -password: String
+    -userId: UUID
+    -pro : boolean
+    -ownedCoins : Map<String, Double> 
+    -buyHistory : List<Purchase>
+    +getHistory(): List<Purchase>
+    +toString(): String
+    +getName(): String
+    +getEmail(): String
+    +getPassword(): String
+    +getUserId(): UUID
+    +isPro(): boolean
+    +togglePro(): void
+    +getOwnedCoins(): Map<String, Double>
+    +addCurrency(final String type, final Double amount): void
+    +removeCurrency(final String type, final Double amount): void
+    +getAccountValueOnTime(final String timestamp): List<DecodeTime> 
+    +validEmail(final String mail): boolean
+    +validUsername(final String username): boolean validUsername(final String username)
+}
+
+class UserAuth{
+    -username: String
+    -password: String
+    -userId: String
+    +setUserName(final String name): void
+    +setPassword(final String password): void
+    +setUserId(final String uniUID): void
+    +getUserName(): String
+    +getPassword(): String
+    +getUserId(): String
+}
+
+class UserValidation{
+    +PATHAUTH: Path
+    +DIRPATH: String
+    +getAuthUsers(): UserAuth[]
+    +getJsonFilesInDirectory(): List<File>
+    +readingFiles(final List<File> files): List<String>
+    +getUserNames(): List<String>
+    +checkForuniqueUserName(final String username): boolean
+    +checkIfValidEmail(final String mail): boolean
+    +checkIfValidUsername(final String username): boolean
+}
+
+
+@enduml
+
