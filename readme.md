@@ -8,7 +8,7 @@ The project was made by
 
 # DEMO
 
-Klikk på bildet så åpned videoen på YouTube
+Click the photo to see demo on YouTube
 
 [![movsearch demo](https://img.youtube.com/vi/dXe-v0XUmVQ/0.jpg)](https://www.youtube.com/watch?v=dXe-v0XUmVQ)
 
