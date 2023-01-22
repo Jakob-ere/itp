@@ -6,6 +6,14 @@ The project was made by
 - Oskar
 - Casper
 
+# DEMO
+
+Klikk på bildet så åpned videoen på YouTube
+
+[![movsearch demo](https://img.youtube.com/vi/dXe-v0XUmVQ/0.jpg)](https://www.youtube.com/watch?v=dXe-v0XUmVQ)
+
+
+
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2022/gr2204/gr2204)
 
 # Cryptocojo
