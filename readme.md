@@ -1,3 +1,11 @@
+Cryptocojo is a app made for the course IT1901. The app was made by a group of 4 during fall of 2022. The development process followed the scrum method, and this repository included the final product.
+
+The project was made by
+- Ole
+- Jakob
+- Oskar
+- Casper
+
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2022/gr2204/gr2204)
 
 # Cryptocojo
